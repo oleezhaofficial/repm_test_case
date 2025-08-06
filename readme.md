@@ -5,12 +5,13 @@
 
 
 Необходимо включить:
-    PowerTools - важен для *-devel пакетов
+
+    PowerTools - важен для *-devel пакетов,
     EPEL - дополнительные пакеты
 
-    dnf config-manager --set-enabled powertools
-    dnf install -y epel-release
-    dnf update -y
+        dnf config-manager --set-enabled powertools
+        dnf install -y epel-release
+        dnf update -y
 
 -----------------
 
