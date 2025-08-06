@@ -1,0 +1,23 @@
+/var/log/openresty/*.log {
+    daily
+    
+    notifempty
+    
+    rotate 52
+    
+    compress
+
+    delaycompress
+
+    missingok
+
+    create 640 openresty openresty
+    
+
+    postrotate
+
+        if [ -f /var/run/openresty/openresty.pid ]; then
+            kill -USR1 `cat /var/run/openresty/openresty.pid`
+        fi
+    endscript
+}

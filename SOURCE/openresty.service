@@ -1,0 +1,18 @@
+[Unit]
+Description=The OpenResty Application Platform
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Environment=LD_LIBRARY_PATH=/usr/openresty/luajit/lib
+Type=forking
+PIDFile=/var/run/openresty/openresty.pid
+ExecStartPre=/usr/openresty/nginx/sbin/nginx -t -c /etc/openresty/openresty.conf
+ExecStart=/usr/openresty/nginx/sbin/nginx -c /etc/openresty/openresty.conf
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+Restart=on-failure
+
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
